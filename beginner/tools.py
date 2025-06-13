@@ -72,7 +72,7 @@ completion = client.chat.completions.create(
     tools=tools,
 )
 
-completion.model_dump()
+completion.model_dump() # Reason to stop is Call tooling
 
 # Step 3: Execute get_weather function
 
@@ -91,7 +91,7 @@ for tool_call in completion.choices[0].message.tool_calls:
     
     messages.append(
         {"role": "tool", "tool_call_id": tool_call.id, "content": json.dumps(result)}
-    )
+    ) # Memory
 
 # Step 4: Supply result and call model again
 
@@ -110,7 +110,8 @@ completion_2 = client.beta.chat.completions.parse(
     response_format=WeatherResponse,
 )
 
-print(completion_2.model_dump())
+completion_2.model_dump() # Reason is Stop
+
 # Step 5: Check model response
 
 final_response = completion_2.choices[0].message.parsed
