@@ -15,10 +15,8 @@ client = openai.AzureOpenAI(
 # Direct Open AI sample code
 # client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-deployment_name = "gpt-4o"  # Replace with your actual deployment name
-
 completion = client.chat.completions.create(
-            model=deployment_name,  # Still use deployment name
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": "You're a helpful assistant"},
                 {"role": "user", "content": "Write a joke about the python programming"}
