@@ -91,6 +91,7 @@ async def check_security(user_input: str) -> SecurityCheck:
 
 async def validate_request(user_input: str) -> bool:
     """Run validation checks in parallel"""
+    # All gather should be on async
     calendar_check, security_check = await asyncio.gather(
         validate_calendar_request(user_input), check_security(user_input)
     )
@@ -122,7 +123,7 @@ async def run_valid_example():
     print(f"\nValidating: {valid_input}")
     print(f"Is valid: {await validate_request(valid_input)}")
 
-
+# Only async function called via asyncio
 asyncio.run(run_valid_example())
 
 # --------------------------------------------------------------

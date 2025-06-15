@@ -26,15 +26,6 @@ def get_weather(latitude, longitude):
     data = response.json()
     return data["current"]
 
-# Call the Model with get_weather tool
-def get_weather(latitude, longitude):
-    """This is a publically available API that returns the weather for a given location."""
-    response = requests.get(
-        f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"
-    )
-    data = response.json()
-    return data["current"]
-
 # Step 1: Call model with get_weather tool defined
 
 tools = [
